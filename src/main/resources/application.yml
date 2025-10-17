@@ -1,30 +1,27 @@
 spring:
+  application:
+    name: WaitZero
+
   config:
     import: optional:classpath:application-secrets.properties
-  datasource:
-    driverClassName: com.mysql.cj.jdbc.Driver
-    url: "jdbc:mysql://localhost:3306/pathfinder?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true&serverTimezone=UTC"
 
-    username: ${DB_USERNAME}
-    password: ${DB_PASSWORD}
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/waitzero?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true&serverTimezone=UTC
+    username: ${DB_USERNAME:root}
+    password: ${DB_PASSWORD:}
 
   servlet:
     multipart:
       max-file-size: 1MB
       max-request-size: 5MB
+
   mvc:
     hiddenmethod:
       filter:
         enabled: true
-#  sql:
-#    init:
-#      mode: always
+
   jpa:
-    # Choose either MySQL 8 or MySQL 5 below
-    # For MySQL 8
-    database-platform: org.hibernate.dialect.MySQL8Dialect
-    #For MySQL 5
-    #database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
     hibernate:
       ddl-auto: update
     open-in-view: false
@@ -32,8 +29,23 @@ spring:
       hibernate:
         format_sql: true
     defer-datasource-initialization: true
-#Cloudinary Properties
-#cloudinary:
-  #api-key: 
-  #api-secret: 
-  #cloud-name: 
+
+---
+spring:
+  config:
+    activate:
+      on-profile: postgres
+
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/waitzero
+    username: ${DB_USERNAME:waitzero}
+    password: ${DB_PASSWORD:waitzero}
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+    properties:
+      hibernate:
+        format_sql: true

@@ -40,5 +40,7 @@ out/
 .env
 .env.*
 
-# Secrets (DO NOT COMMIT)
-friendly-lend-app/src/main/resources/application-secrets.properties
+
+# Secrets
+src/main/resources/application-secrets.properties
+.env
