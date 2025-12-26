@@ -18,6 +18,9 @@
                     <a href="/">Home</a>
                 </li>
                 <li>
+                    <a href="/locations">Locations</a>
+                </li>
+                <li>
                     <a href="/users/login">Login</a>
                 </li>
                 <li>
@@ -28,6 +31,9 @@
                 </li>
             </th:block>
             <th:block th:unless="${@currentUser.id == null}">
+                <li>
+                    <a href="/locations">Locations</a>
+                </li>
                 <li>
                     <a th:href="@{/users/profile/{id}(id=${@currentUser.id})}">Profile</a>
                 </li>

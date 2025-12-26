@@ -1,0 +1,37 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/commons::head}"></head>
+<body>
+<header th:replace="~{fragments/commons::navigation}"></header>
+
+<main class="container mt-5">
+    <h1 class="mb-4">Locations</h1>
+
+    <p th:if="${#lists.isEmpty(locations)}">
+        No locations yet.
+    </p>
+
+    <table th:if="${!#lists.isEmpty(locations)}" class="table table-striped">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Timezone</th>
+            <th>Active</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="loc : ${locations}">
+            <td th:text="${loc.name}">Sofia Lab</td>
+            <td th:text="${loc.address}">Some address</td>
+            <td th:text="${loc.timezone}">Europe/Sofia</td>
+            <td>
+                <span th:text="${loc.active} ? 'Yes' : 'No'">Yes</span>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</main>
+
+<footer th:replace="~{fragments/commons::footer}"></footer>
+</body>
+</html>
