@@ -1,6 +1,5 @@
 package dev.waitzero.waitzero.model.service;
 
-import dev.waitzero.waitzero.model.entity.Level;
 import dev.waitzero.waitzero.model.entity.Role;
 
 
@@ -13,7 +12,6 @@ public class UserServiceModel {
     private String password;
     private String email;
     private Integer age;
-    private Level level;
     private Set<Role> roles;
 
     public UserServiceModel() {
@@ -73,13 +71,6 @@ public class UserServiceModel {
         return this;
     }
 
-    public Level getLevel() {
-        return level;
-    }
-
-    public void setLevel(Level level) {
-        this.level = level;
-    }
 
     public Set<Role> getRoles() {
         return roles;

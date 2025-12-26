@@ -27,9 +27,6 @@ public class User {
 
     private Integer age;
 
-    @Enumerated(EnumType.STRING)
-    private Level level;
-
 
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<Role> roles;
@@ -83,13 +80,6 @@ public class User {
         this.email = email;
     }
 
-    public Level getLevel() {
-        return level;
-    }
-
-    public void setLevel(Level level) {
-        this.level = level;
-    }
 
     public Integer getAge() {
         return age;

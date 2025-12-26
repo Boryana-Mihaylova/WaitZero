@@ -1,14 +1,12 @@
 package dev.waitzero.waitzero.model.view;
 
 
-import dev.waitzero.waitzero.model.entity.Level;
-
 public class UserViewModel {
     private Long id;
     private String fullName;
     private String username;
     private Integer age;
-    private Level level;
+
 
     public UserViewModel() {
     }
@@ -48,12 +46,6 @@ public class UserViewModel {
         this.age = age;
         return this;
     }
-
-    public Level getLevel() {
-        return level;
-    }
-
-    public void setLevel(Level level) {
-        this.level = level;
-    }
 }
+
+

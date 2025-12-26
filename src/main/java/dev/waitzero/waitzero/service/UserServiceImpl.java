@@ -1,7 +1,6 @@
 package dev.waitzero.waitzero.service;
 
 
-import dev.waitzero.waitzero.model.entity.Level;
 import dev.waitzero.waitzero.model.entity.User;
 import dev.waitzero.waitzero.model.service.UserServiceModel;
 import dev.waitzero.waitzero.repository.UserRepository;
@@ -27,7 +26,6 @@ public class UserServiceImpl implements UserService {
     @Override
     public void registerUser(UserServiceModel userServiceModel) {
         User user = modelMapper.map(userServiceModel, User.class);
-        user.setLevel(Level.BEGINNER);
 
         userRepository.save(user);
     }
