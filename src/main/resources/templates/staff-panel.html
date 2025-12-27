@@ -1,0 +1,64 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/commons::head}"></head>
+<body>
+<header th:replace="~{fragments/commons::navigation}"></header>
+
+<main class="container mt-5">
+    <h1>Staff Panel</h1>
+
+    <div th:if="${error}">
+        <div class="alert alert-danger" th:text="${error}">Error</div>
+    </div>
+
+    <div th:if="${info}">
+        <div class="alert alert-info" th:text="${info}">Info</div>
+    </div>
+
+    <div th:if="${location != null}">
+        <p>
+            <strong>Location:</strong>
+            <span th:text="${location.name}">Sofia Lab</span>
+        </p>
+        <p>
+            <strong>Service:</strong>
+            <span th:text="${service.name}">Blood tests</span>
+        </p>
+    </div>
+
+    <form th:action="@{/staff/call-next}" method="post" class="mb-3">
+        <button type="submit" class="btn btn-primary">Call next ticket</button>
+    </form>
+
+    <div th:if="${calledTicket != null}">
+        <h2>Last called ticket</h2>
+        <p>
+            <strong>Number:</strong>
+            <span th:text="${calledTicket.ticketNumber}">1</span>
+            (<span th:text="${calledTicket.status}">CALLED</span>)
+        </p>
+    </div>
+
+    <h2 class="mt-4">Waiting tickets</h2>
+    <p th:if="${#lists.isEmpty(waitingTickets)}">No waiting tickets.</p>
+
+    <table th:if="${!#lists.isEmpty(waitingTickets)}" class="table table-striped">
+        <thead>
+        <tr>
+            <th>Ticket #</th>
+            <th>Status</th>
+            <th>Created at</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="t : ${waitingTickets}">
+            <td th:text="${t.ticketNumber}">1</td>
+            <td th:text="${t.status}">WAITING</td>
+            <td th:text="${t.createdAt}">2025-01-01T12:00</td>
+        </tr>
+        </tbody>
+    </table>
+</main>
+
+<footer th:replace="~{fragments/commons::footer}"></footer>
+</body>
+</html>
