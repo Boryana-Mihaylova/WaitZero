@@ -17,6 +17,7 @@
             <th>Address</th>
             <th>Timezone</th>
             <th>Active</th>
+            <th>Actions</th>
         </tr>
         </thead>
         <tbody>
@@ -26,6 +27,15 @@
             <td th:text="${loc.timezone}">Europe/Sofia</td>
             <td>
                 <span th:text="${loc.active} ? 'Yes' : 'No'">Yes</span>
+            </td>
+            <td>
+                <form th:action="@{/tickets/take}" method="post">
+                    <input type="hidden" name="locationId" th:value="${loc.id}"/>
+                    <input type="hidden" name="serviceId" value="1"/> <!-- временно -->
+                    <button type="submit" class="btn btn-sm btn-primary">
+                        Take ticket
+                    </button>
+                </form>
             </td>
         </tr>
         </tbody>
