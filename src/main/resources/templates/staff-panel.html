@@ -37,6 +37,16 @@
             (<span th:text="${calledTicket.status}">CALLED</span>)
         </p>
     </div>
+    <p th:if="${#lists.isEmpty(waitingTickets)}">
+        No waiting tickets at the moment.
+    </p>
+
+    <div th:if="${calledTicket != null}" class="alert alert-info mt-3">
+        Last called ticket:
+        <strong th:text="${calledTicket.ticketNumber}">1</strong>
+        (<span th:text="${calledTicket.location.name}">Location</span>,
+        <span th:text="${calledTicket.service.name}">Service</span>)
+    </div>
 
     <h2 class="mt-4">Waiting tickets</h2>
     <p th:if="${#lists.isEmpty(waitingTickets)}">No waiting tickets.</p>
@@ -44,7 +54,9 @@
     <table th:if="${!#lists.isEmpty(waitingTickets)}" class="table table-striped">
         <thead>
         <tr>
-            <th>Ticket #</th>
+            <th>#</th>
+            <th>Location</th>
+            <th>Service</th>
             <th>Status</th>
             <th>Created at</th>
         </tr>
@@ -52,8 +64,12 @@
         <tbody>
         <tr th:each="t : ${waitingTickets}">
             <td th:text="${t.ticketNumber}">1</td>
+            <td th:text="${t.location.name}">City Hospital Sofia</td>
+            <td th:text="${t.service.name}">Blood tests</td>
             <td th:text="${t.status}">WAITING</td>
-            <td th:text="${t.createdAt}">2025-01-01T12:00</td>
+            <td th:text="${#temporals.format(t.createdAt, 'dd.MM.yyyy HH:mm')}">
+                28.12.2025 17:02
+            </td>
         </tr>
         </tbody>
     </table>
