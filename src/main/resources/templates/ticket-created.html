@@ -12,6 +12,14 @@
         <p><strong>Your number:</strong> <span th:text="${ticket.ticketNumber}"></span></p>
         <p><strong>Status:</strong> <span th:text="${ticket.status}"></span></p>
 
+        <p th:if="${peopleAhead != null}">
+            There are <strong th:text="${peopleAhead}">0</strong> people ahead of you.
+        </p>
+        <p th:if="${estimatedWaitMinutes != null}">
+            Estimated waiting time:
+            <strong th:text="${estimatedWaitMinutes}">0</strong> minutes.
+        </p>
+
         <p class="mt-3">
             Wait nearby — refresh this page later to check your status.
         </p>

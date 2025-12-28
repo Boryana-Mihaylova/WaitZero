@@ -22,6 +22,7 @@ public interface TicketRepository extends JpaRepository<Ticket, Long> {
         """)
     int findMaxTicketNumber(Location location, ServiceOffering service);
 
+
     long countByLocationAndServiceAndStatus(
             Location location,
             ServiceOffering service,
@@ -55,4 +56,10 @@ public interface TicketRepository extends JpaRepository<Ticket, Long> {
             ServiceOffering service,
             TicketStatus status
     );
+
+    List<Ticket> findByStatusOrderByCreatedAtAsc(TicketStatus status);
+
+    Optional<Ticket> findFirstByStatusOrderByCreatedAtAsc(TicketStatus status);
+
+
 }
