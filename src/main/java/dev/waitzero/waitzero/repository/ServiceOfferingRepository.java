@@ -11,4 +11,5 @@ import java.util.List;
 public interface ServiceOfferingRepository extends JpaRepository<ServiceOffering, Long> {
 
     List<ServiceOffering> findByLocationAndActiveTrue(Location location);
+
 }
