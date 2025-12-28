@@ -34,6 +34,9 @@
                 <li>
                     <a href="/locations">Locations</a>
                 </li>
+                <li th:if="${session.CURRENT_TICKET_ID != null}">
+                    <a th:href="@{/tickets/current}">My ticket</a>
+                </li>
                 <li>
                     <a href="/staff/panel">Staff panel</a>
                 </li>

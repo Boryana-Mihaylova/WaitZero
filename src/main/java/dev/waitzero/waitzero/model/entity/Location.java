@@ -23,6 +23,10 @@ public class Location {
     @Column(nullable = false)
     private boolean active = true;
 
+    private String code;
+
+
+
     public Location() {
     }
 
@@ -68,6 +72,14 @@ public class Location {
 
     public Location setActive(boolean active) {
         this.active = active;
+        return this;
+    }
+    public String getCode() {
+        return code;
+    }
+
+    public Location setCode(String code) {
+        this.code = code;
         return this;
     }
 

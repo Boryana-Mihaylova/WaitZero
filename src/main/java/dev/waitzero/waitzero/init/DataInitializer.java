@@ -30,6 +30,7 @@ public class DataInitializer implements CommandLineRunner {
 
         Location hospital = new Location()
                 .setName("City Hospital Sofia")
+                .setCode("H")
                 .setAddress("Sofia, Center")
                 .setTimezone("Europe/Sofia")
                 .setActive(true);
@@ -38,6 +39,7 @@ public class DataInitializer implements CommandLineRunner {
 
         Location lab = new Location()
                 .setName("MedLab Diagnostics")
+                .setCode("L")
                 .setAddress("Sofia, Mladost")
                 .setTimezone("Europe/Sofia")
                 .setActive(true);
@@ -46,6 +48,7 @@ public class DataInitializer implements CommandLineRunner {
 
         Location gpClinic = new Location()
                 .setName("Mladost Polyclinic – GP Area")
+                .setCode("G")
                 .setAddress("Sofia, Mladost")
                 .setTimezone("Europe/Sofia")
                 .setActive(true);
@@ -54,6 +57,7 @@ public class DataInitializer implements CommandLineRunner {
 
         Location municipality = new Location()
                 .setName("Municipal Service Center")
+                .setCode("M")
                 .setAddress("Sofia, Center")
                 .setTimezone("Europe/Sofia")
                 .setActive(true);
@@ -62,6 +66,7 @@ public class DataInitializer implements CommandLineRunner {
 
         Location vti = new Location()
                 .setName("Vehicle Technical Inspection")
+                .setCode("V")
                 .setAddress("Sofia, Center")
                 .setTimezone("Europe/Sofia")
                 .setActive(true);

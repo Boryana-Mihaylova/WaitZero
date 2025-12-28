@@ -9,7 +9,10 @@
     <div class="mt-4" th:if="${ticket != null}">
         <p><strong>Location:</strong> <span th:text="${ticket.location.name}"></span></p>
         <p><strong>Service:</strong> <span th:text="${ticket.service.name}"></span></p>
-        <p><strong>Your number:</strong> <span th:text="${ticket.ticketNumber}"></span></p>
+        <p>
+            <strong>Your ticket:</strong>
+            <span th:text="${ticket.location.code + '-' + ticket.ticketNumber}">H-4</span>
+        </p>
         <p><strong>Status:</strong> <span th:text="${ticket.status}"></span></p>
 
         <p th:if="${peopleAhead != null}">
@@ -23,6 +26,10 @@
         <p class="mt-3">
             Wait nearby — refresh this page later to check your status.
         </p>
+        <a class="btn btn-secondary mt-3"
+           th:href="@{/tickets/{id}(id=${ticket.id})}">
+            Refresh status
+        </a>
     </div>
 
     <a href="/locations" class="btn btn-secondary mt-3">Back</a>

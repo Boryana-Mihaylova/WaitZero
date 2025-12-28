@@ -8,11 +8,10 @@ import dev.waitzero.waitzero.repository.LocationRepository;
 import dev.waitzero.waitzero.repository.ServiceOfferingRepository;
 import dev.waitzero.waitzero.repository.TicketRepository;
 import dev.waitzero.waitzero.service.TicketService;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
@@ -37,7 +36,7 @@ public class TicketController {
     @PostMapping("/take")
     public String takeTicket(@RequestParam Long locationId,
                              @RequestParam Long serviceId,
-                             Model model) {
+                             Model model, HttpSession session) {
 
         Optional<Location> locationOpt = locationRepository.findById(locationId);
         Optional<ServiceOffering> serviceOpt = serviceOfferingRepository.findById(serviceId);
@@ -53,6 +52,45 @@ public class TicketController {
                 null
         );
 
+        session.setAttribute("CURRENT_TICKET_ID", ticket.getId());
+
+        populateTicketModel(model, ticket);
+
+        return "ticket-created";
+    }
+
+    @GetMapping("/{id}")
+    public String viewTicket(@PathVariable Long id, Model model) {
+
+        Optional<Ticket> ticketOpt = ticketRepository.findById(id);
+
+        if (ticketOpt.isEmpty()) {
+            return "redirect:/locations";
+        }
+
+        Ticket ticket = ticketOpt.get();
+
+        populateTicketModel(model, ticket);
+
+        return "ticket-created";
+    }
+
+    @GetMapping("/current")
+    public String viewCurrentTicket(HttpSession session) {
+
+        Object idObj = session.getAttribute("CURRENT_TICKET_ID");
+
+        if (idObj == null) {
+            return "redirect:/locations";
+        }
+
+        Long id = (Long) idObj;
+
+        return "redirect:/tickets/" + id;
+    }
+
+    private void populateTicketModel(Model model, Ticket ticket) {
+
         long peopleAhead = ticketRepository
                 .countByLocationAndServiceAndStatusAndCreatedAtBefore(
                         ticket.getLocation(),
@@ -60,7 +98,6 @@ public class TicketController {
                         TicketStatus.WAITING,
                         ticket.getCreatedAt()
                 );
-
 
         Integer avgServiceMinutes = ticket.getService().getAvgServiceMinutes();
 
@@ -73,7 +110,7 @@ public class TicketController {
         model.addAttribute("ticket", ticket);
         model.addAttribute("peopleAhead", peopleAhead);
         model.addAttribute("estimatedWaitMinutes", estimatedWaitMinutes);
-
-        return "ticket-created";
     }
+
+
 }
