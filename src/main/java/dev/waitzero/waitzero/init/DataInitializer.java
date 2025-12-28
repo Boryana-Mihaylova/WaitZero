@@ -45,7 +45,7 @@ public class DataInitializer implements CommandLineRunner {
 
 
         Location gpClinic = new Location()
-                .setName("GP Clinic Mladost")
+                .setName("Mladost Polyclinic – GP Area")
                 .setAddress("Sofia, Mladost")
                 .setTimezone("Europe/Sofia")
                 .setActive(true);
@@ -101,18 +101,9 @@ public class DataInitializer implements CommandLineRunner {
                         .setActive(true)
         );
 
-        // GP services
         serviceOfferingRepository.save(
                 new ServiceOffering()
-                        .setName("Issuing referral")
-                        .setAvgServiceMinutes(12)
-                        .setLocation(gpClinic)
-                        .setActive(true)
-        );
-
-        serviceOfferingRepository.save(
-                new ServiceOffering()
-                        .setName("Sick leave document")
+                        .setName("Dr. Ivanova")
                         .setAvgServiceMinutes(15)
                         .setLocation(gpClinic)
                         .setActive(true)
@@ -120,8 +111,16 @@ public class DataInitializer implements CommandLineRunner {
 
         serviceOfferingRepository.save(
                 new ServiceOffering()
-                        .setName("Vaccination")
-                        .setAvgServiceMinutes(10)
+                        .setName("Dr. Petrov")
+                        .setAvgServiceMinutes(15)
+                        .setLocation(gpClinic)
+                        .setActive(true)
+        );
+
+        serviceOfferingRepository.save(
+                new ServiceOffering()
+                        .setName("Dr. Georgiev")
+                        .setAvgServiceMinutes(15)
                         .setLocation(gpClinic)
                         .setActive(true)
         );
