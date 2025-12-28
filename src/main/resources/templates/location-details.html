@@ -1,0 +1,54 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/commons::head}"></head>
+<body>
+<header th:replace="~{fragments/commons::navigation}"></header>
+
+<main class="container mt-5">
+    <h1 th:text="${location.name}">Location name</h1>
+    <p>
+        <strong>Address:</strong>
+        <span th:text="${location.address}">Sofia, Center</span>
+    </p>
+    <p>
+        <strong>City:</strong>
+        <span th:text="${#strings.substringAfter(location.timezone, '/')}">Sofia</span>
+    </p>
+
+    <h2 class="mt-4">Services</h2>
+
+    <p th:if="${#lists.isEmpty(services)}">
+        No services configured for this location yet.
+    </p>
+
+    <table th:if="${!#lists.isEmpty(services)}" class="table table-striped">
+        <thead>
+        <tr>
+            <th>Service</th>
+            <th>Avg. duration (min)</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="srv : ${services}">
+            <td th:text="${srv.name}">Service name</td>
+            <td th:text="${srv.avgServiceMinutes}">15</td>
+            <td>
+                <form th:action="@{/tickets/take}" method="post">
+                    <input type="hidden" name="locationId" th:value="${location.id}"/>
+                    <input type="hidden" name="serviceId" th:value="${srv.id}"/>
+
+                    <button type="submit" class="btn btn-sm btn-primary">
+                        Take ticket
+                    </button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <a href="/locations" class="btn btn-link mt-3">Back to locations</a>
+</main>
+
+<footer th:replace="~{fragments/commons::footer}"></footer>
+</body>
+</html>

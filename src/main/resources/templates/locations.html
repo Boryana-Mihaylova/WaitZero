@@ -24,18 +24,15 @@
         <tr th:each="loc : ${locations}">
             <td th:text="${loc.name}">Sofia Lab</td>
             <td th:text="${loc.address}">Some address</td>
-            <td th:text="${loc.timezone}">Europe/Sofia</td>
+            <td th:text="${#strings.substringAfter(loc.timezone, '/')}">Sofia</td>
             <td>
                 <span th:text="${loc.active} ? 'Yes' : 'No'">Yes</span>
             </td>
             <td>
-                <form th:action="@{/tickets/take}" method="post">
-                    <input type="hidden" name="locationId" th:value="${loc.id}"/>
-                    <input type="hidden" name="serviceId" value="1"/> <!-- временно -->
-                    <button type="submit" class="btn btn-sm btn-primary">
-                        Take ticket
-                    </button>
-                </form>
+                <a th:href="@{/locations/{id}(id=${loc.id})}"
+                   class="btn btn-sm btn-secondary">
+                    View services
+                </a>
             </td>
         </tr>
         </tbody>
