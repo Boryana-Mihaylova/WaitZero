@@ -33,14 +33,22 @@
             <td th:text="${srv.name}">Service name</td>
             <td th:text="${srv.avgServiceMinutes}">15</td>
             <td>
-                <form th:action="@{/tickets/take}" method="post">
-                    <input type="hidden" name="locationId" th:value="${location.id}"/>
-                    <input type="hidden" name="serviceId" th:value="${srv.id}"/>
+                <th:block th:if="${@currentUser.id != null}">
+                    <form th:action="@{/tickets/take}" method="post">
+                        <input type="hidden" name="locationId" th:value="${location.id}"/>
+                        <input type="hidden" name="serviceId" th:value="${srv.id}"/>
 
-                    <button type="submit" class="btn btn-sm btn-primary">
-                        Take ticket
-                    </button>
-                </form>
+                        <button type="submit" class="btn btn-sm btn-primary">
+                            Take ticket
+                        </button>
+                    </form>
+                </th:block>
+
+                <th:block th:if="${@currentUser.id == null}">
+                    <a th:href="@{/users/login}" class="btn btn-sm btn-outline-secondary">
+                        Log in to take a ticket
+                    </a>
+                </th:block>
             </td>
         </tr>
         </tbody>
