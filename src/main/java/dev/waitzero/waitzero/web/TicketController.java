@@ -90,17 +90,33 @@ public class TicketController {
     }
 
     @GetMapping("/current")
-    public String viewCurrentTicket(HttpSession session) {
+    public String viewCurrentTicket(Model model) {
 
-        Object idObj = session.getAttribute("CURRENT_TICKET_ID");
+        if (currentUser.getId() == null) {
+            return "redirect:/users/login";
+        }
 
-        if (idObj == null) {
+        var userOpt = userRepository.findById(currentUser.getId());
+
+        if (userOpt.isEmpty()) {
+            return "redirect:/users/login";
+        }
+
+        var user = userOpt.get();
+
+        // Първо пробваме активен (WAITING) билет
+        var ticketOpt = ticketRepository
+                .findFirstByUserAndStatusOrderByCreatedAtDesc(user, TicketStatus.WAITING);
+
+        // Ако няма WAITING, може да покажем последния CALLED (по желание)
+        if (ticketOpt.isEmpty()) {
             return "redirect:/locations";
         }
 
-        Long id = (Long) idObj;
+        Ticket ticket = ticketOpt.get();
+        populateTicketModel(model, ticket);
 
-        return "redirect:/tickets/" + id;
+        return "ticket-created";
     }
 
     private void populateTicketModel(Model model, Ticket ticket) {
