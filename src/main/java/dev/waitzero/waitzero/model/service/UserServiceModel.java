@@ -1,7 +1,5 @@
 package dev.waitzero.waitzero.model.service;
 
-import dev.waitzero.waitzero.model.entity.Role;
-
 
 import java.util.Set;
 
@@ -12,7 +10,7 @@ public class UserServiceModel {
     private String password;
     private String email;
     private Integer age;
-    private Set<Role> roles;
+
 
     public UserServiceModel() {
     }
@@ -72,11 +70,5 @@ public class UserServiceModel {
     }
 
 
-    public Set<Role> getRoles() {
-        return roles;
-    }
 
-    public void setRoles(Set<Role> roles) {
-        this.roles = roles;
-    }
 }
