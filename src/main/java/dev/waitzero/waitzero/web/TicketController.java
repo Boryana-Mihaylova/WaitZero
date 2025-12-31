@@ -1,13 +1,12 @@
 package dev.waitzero.waitzero.web;
 
-import dev.waitzero.waitzero.model.entity.Location;
-import dev.waitzero.waitzero.model.entity.ServiceOffering;
-import dev.waitzero.waitzero.model.entity.Ticket;
-import dev.waitzero.waitzero.model.entity.TicketStatus;
+import dev.waitzero.waitzero.model.entity.*;
 import dev.waitzero.waitzero.repository.LocationRepository;
 import dev.waitzero.waitzero.repository.ServiceOfferingRepository;
 import dev.waitzero.waitzero.repository.TicketRepository;
+import dev.waitzero.waitzero.repository.UserRepository;
 import dev.waitzero.waitzero.service.TicketService;
+import dev.waitzero.waitzero.util.CurrentUser;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,20 +22,34 @@ public class TicketController {
     private final ServiceOfferingRepository serviceOfferingRepository;
     private final TicketService ticketService;
     private final TicketRepository ticketRepository;
+    private final CurrentUser currentUser;
+    private final UserRepository userRepository;
 
     public TicketController(LocationRepository locationRepository,
                             ServiceOfferingRepository serviceOfferingRepository,
-                            TicketService ticketService, TicketRepository ticketRepository) {
+                            TicketService ticketService, TicketRepository ticketRepository, CurrentUser currentUser, UserRepository userRepository) {
         this.locationRepository = locationRepository;
         this.serviceOfferingRepository = serviceOfferingRepository;
         this.ticketService = ticketService;
         this.ticketRepository = ticketRepository;
+        this.currentUser = currentUser;
+        this.userRepository = userRepository;
     }
 
     @PostMapping("/take")
     public String takeTicket(@RequestParam Long locationId,
                              @RequestParam Long serviceId,
                              Model model, HttpSession session) {
+
+        if (currentUser.getId() == null) {
+            return "redirect:/users/login";
+        }
+
+        Optional<User> userOpt = userRepository.findById(currentUser.getId());
+        if (userOpt.isEmpty()) {
+            return "redirect:/users/login";
+        }
+        User user = userOpt.get();
 
         Optional<Location> locationOpt = locationRepository.findById(locationId);
         Optional<ServiceOffering> serviceOpt = serviceOfferingRepository.findById(serviceId);
@@ -49,7 +62,8 @@ public class TicketController {
                 locationOpt.get(),
                 serviceOpt.get(),
                 null,
-                null
+                null,
+                user
         );
 
         session.setAttribute("CURRENT_TICKET_ID", ticket.getId());
