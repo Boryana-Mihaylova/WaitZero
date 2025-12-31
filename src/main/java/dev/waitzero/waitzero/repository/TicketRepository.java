@@ -1,9 +1,6 @@
 package dev.waitzero.waitzero.repository;
 
-import dev.waitzero.waitzero.model.entity.Location;
-import dev.waitzero.waitzero.model.entity.ServiceOffering;
-import dev.waitzero.waitzero.model.entity.Ticket;
-import dev.waitzero.waitzero.model.entity.TicketStatus;
+import dev.waitzero.waitzero.model.entity.*;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -60,6 +57,8 @@ public interface TicketRepository extends JpaRepository<Ticket, Long> {
     List<Ticket> findByStatusOrderByCreatedAtAsc(TicketStatus status);
 
     Optional<Ticket> findFirstByStatusOrderByCreatedAtAsc(TicketStatus status);
+
+    void deleteByUserAndStatus(User user, TicketStatus status);
 
 
 }

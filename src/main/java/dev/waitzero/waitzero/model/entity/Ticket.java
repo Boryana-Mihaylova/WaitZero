@@ -44,6 +44,12 @@ public class Ticket {
     @Column(name = "served_at")
     private LocalDateTime servedAt;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
+
+
 
 
 
@@ -137,6 +143,14 @@ public class Ticket {
 
     public Ticket setServedAt(LocalDateTime servedAt) {
         this.servedAt = servedAt;
+        return this;
+    }
+    public User getUser() {
+        return user;
+    }
+
+    public Ticket setUser(User user) {
+        this.user = user;
         return this;
     }
 }
