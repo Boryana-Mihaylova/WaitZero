@@ -2,6 +2,7 @@ package dev.waitzero.waitzero.service;
 
 
 import dev.waitzero.waitzero.model.entity.User;
+import dev.waitzero.waitzero.model.entity.UserRole;
 import dev.waitzero.waitzero.model.service.UserServiceModel;
 import dev.waitzero.waitzero.repository.UserRepository;
 
@@ -27,6 +28,8 @@ public class UserServiceImpl implements UserService {
     public void registerUser(UserServiceModel userServiceModel) {
         User user = modelMapper.map(userServiceModel, User.class);
 
+        user.setRole(UserRole.USER);
+
         userRepository.save(user);
     }
 
@@ -40,9 +43,13 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void loginUser(Long id, String username) {
+
+        User user = userRepository.findById(id).orElseThrow();
+
         currentUser
                 .setUsername(username)
-                .setId(id);
+                .setId(id)
+                .setRole(user.getRole());
     }
 
     @Override
