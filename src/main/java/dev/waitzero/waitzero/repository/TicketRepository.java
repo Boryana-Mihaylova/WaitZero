@@ -60,5 +60,10 @@ public interface TicketRepository extends JpaRepository<Ticket, Long> {
 
     void deleteByUserAndStatus(User user, TicketStatus status);
 
+    Optional<Ticket> findFirstByUserAndStatusOrderByCreatedAtDesc(
+            User user,
+            TicketStatus status
+    );
+
 
 }
