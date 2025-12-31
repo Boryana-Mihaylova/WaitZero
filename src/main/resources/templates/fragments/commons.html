@@ -37,9 +37,12 @@
                 <li th:if="${session.CURRENT_TICKET_ID != null}">
                     <a th:href="@{/tickets/current}">My ticket</a>
                 </li>
-                <li>
-                    <a href="/staff/panel">Staff panel</a>
-                </li>
+                <th:block th:if="${@currentUser.role == T(dev.waitzero.waitzero.model.entity.UserRole).STAFF
+                  or @currentUser.role == T(dev.waitzero.waitzero.model.entity.UserRole).ADMIN}">
+                    <li>
+                        <a href="/staff/panel">Staff</a>
+                    </li>
+                </th:block>
                 <li>
                     <a th:href="@{/users/profile/{id}(id=${@currentUser.id})}">Profile</a>
                 </li>
