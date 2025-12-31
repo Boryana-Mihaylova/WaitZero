@@ -19,18 +19,14 @@ public class User {
     @Column(nullable = false)
     private String password;
 
-
-    @ManyToMany(fetch = FetchType.EAGER)
-    private Set<Role> roles;
-
-
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private UserRole role;
 
 
 
 
-    public User() {
-        this.roles = new HashSet<>();
-    }
+
 
     public long getId() {
         return id;
@@ -56,12 +52,11 @@ public class User {
         this.password = password;
     }
 
-
-    public Set<Role> getRoles() {
-        return roles;
+    public UserRole getRole() {
+        return role;
     }
 
-    public void setRoles(Set<Role> roles) {
-        this.roles = roles;
+    public void setRole(UserRole role) {
+        this.role = role;
     }
 }
