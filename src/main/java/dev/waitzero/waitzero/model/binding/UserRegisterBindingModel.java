@@ -20,32 +20,6 @@ public class UserRegisterBindingModel {
         return this;
     }
 
-    public String getFullName() {
-        return fullName;
-    }
-
-    public UserRegisterBindingModel setFullName(String fullName) {
-        this.fullName = fullName;
-        return this;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public UserRegisterBindingModel setEmail(String email) {
-        this.email = email;
-        return this;
-    }
-
-    public Integer getAge() {
-        return age;
-    }
-
-    public UserRegisterBindingModel setAge(Integer age) {
-        this.age = age;
-        return this;
-    }
 
     public String getPassword() {
         return password;

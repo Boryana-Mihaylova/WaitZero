@@ -19,14 +19,6 @@ public class User {
     @Column(nullable = false)
     private String password;
 
-    @Column(name = "full_name")
-    private String fullName;
-
-    @Column(unique = true)
-    private String email;
-
-    private Integer age;
-
 
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<Role> roles;
@@ -64,30 +56,6 @@ public class User {
         this.password = password;
     }
 
-    public String getFullName() {
-        return fullName;
-    }
-
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-
-    public Integer getAge() {
-        return age;
-    }
-
-    public void setAge(Integer age) {
-        this.age = age;
-    }
 
     public Set<Role> getRoles() {
         return roles;
