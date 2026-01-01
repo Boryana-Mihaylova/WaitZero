@@ -3,8 +3,12 @@ package dev.waitzero.waitzero.web;
 
 import dev.waitzero.waitzero.model.binding.UserLoginBindingModel;
 import dev.waitzero.waitzero.model.binding.UserRegisterBindingModel;
+import dev.waitzero.waitzero.model.entity.TicketStatus;
+import dev.waitzero.waitzero.model.entity.User;
 import dev.waitzero.waitzero.model.service.UserServiceModel;
 import dev.waitzero.waitzero.model.view.UserViewModel;
+import dev.waitzero.waitzero.repository.TicketRepository;
+import dev.waitzero.waitzero.repository.UserRepository;
 import dev.waitzero.waitzero.service.UserService;
 import jakarta.validation.Valid;
 import org.modelmapper.ModelMapper;
@@ -23,11 +27,15 @@ public class UserController {
 
     private final UserService userService;
     private final ModelMapper modelMapper;
+    private final UserRepository userRepository;
+    private final TicketRepository ticketRepository;
 
     public UserController(UserService userService,
-                          ModelMapper modelMapper) {
+                          ModelMapper modelMapper, UserRepository userRepository, TicketRepository ticketRepository) {
         this.userService = userService;
         this.modelMapper = modelMapper;
+        this.userRepository = userRepository;
+        this.ticketRepository = ticketRepository;
     }
 
     @ModelAttribute
@@ -119,8 +127,21 @@ public class UserController {
     @GetMapping("/profile/{id}")
     private String profile(@PathVariable Long id, Model model) {
 
-        model.addAttribute("user", modelMapper
-                .map(userService.findById(id), UserViewModel.class));
+        var userServiceModel = userService.findById(id);
+        model.addAttribute("user", modelMapper.map(userServiceModel, UserViewModel.class));
+
+
+        User userEntity = userRepository.findById(id).orElse(null);
+
+        boolean hasActiveTicket = false;
+
+        if (userEntity != null) {
+            hasActiveTicket = ticketRepository
+                    .findFirstByUserAndStatusOrderByCreatedAtDesc(userEntity, TicketStatus.WAITING)
+                    .isPresent();
+        }
+
+        model.addAttribute("hasActiveTicket", hasActiveTicket);
 
         return "profile";
     }
