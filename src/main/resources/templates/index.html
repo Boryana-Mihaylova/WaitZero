@@ -5,81 +5,75 @@
 </head>
 <body>
 <div class="wrapper">
-    <!-- Navigation -->
+
     <header th:replace="~{fragments/commons::navigation}">
     </header>
-    <!-- Top Container -->
+
     <section class="top-container">
         <div class="showcase">
-            <h1>WaitZero – Skip the Queue</h1>
-            <p>Book your place in line digitally and get notified when it’s your turn.</p>
-            <a href="/" class="btn">Get started</a>
+            <h1>WaitZero — No more standing in line</h1>
+
+            <p>
+                Take a digital ticket, follow the queue live, and arrive just in time.
+            </p>
+
+            <a th:href="@{/locations}" class="btn">
+                Get started
+            </a>
         </div>
-        <div class="top-box top-box-a">
-            <h4>Времето в София</h4>
-            <h4><span id="box-a-temp">15</span><span>&#8451;</span></h4>
-            <img id="box-a-img" src="/images/sun.png" height="150px" alt="">
+        <div class="top-box top-box-a text-center">
+            <h4>Queue management without the chaos</h4>
+
+            <p class="mt-2">
+                Skip paper tickets, crowded hallways, and guessing when it’s your turn.
+            </p>
         </div>
-        <div class="top-box top-box-b">
-            <h4>Времето в Созопол</h4>
-            <h4><span id="box-b-temp">27</span><span>&#8451;</span></h4>
-            <img id="box-b-img" src="/images/cloudy.png" height="150px" alt="">
+
+        <div class="top-box top-box-b text-center">
+            <p class="mt-2">
+                WaitZero helps reduce wait times and gives people clear,
+                real-time updates — from anywhere.
+            </p>
+        </div>
+
+    </section>
+
+    <section class="mt-5">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md-4 mb-4">
+                    <i class="fas fa-map-marker-alt fa-2x mb-2 text-dark"></i>
+                    <h3 class="h5">Choose location</h3>
+                    <p class="text-muted small">
+                        Hospitals, labs, GP clinics and service centers that support digital queues.
+                    </p>
+                </div>
+
+                <div class="col-md-4 mb-4">
+                    <i class="fas fa-user-md fa-2x mb-2 text-dark"></i>
+                    <h3 class="h5">See services</h3>
+                    <p class="text-muted small">
+                        Blood tests, GP visits, ID applications, vehicle inspection and more.
+                    </p>
+                </div>
+
+                <div class="col-md-4 mb-4">
+                    <i class="fas fa-list-ol fa-2x mb-2 text-dark"></i>
+                    <h3 class="h5">Track your place</h3>
+                    <p class="text-muted small">
+                        See your ticket number in the queue and arrive just before you’re called.
+                    </p>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- Boxes Section -->
-    <section class="boxes">
-        <a href="/" class="main-btn">
-            <div class="box">
-                <img src="/images/pedestrian.png" height="150px" alt="">
-                <h3>Pedestrian</h3>
-                <p>Is this your Leg day?</p>
-            </div>
-        </a>
-        <a href="/" class="main-btn">
-            <div class="box">
-                <img src="/images/bicycle.png" height="150px" alt="">
-                <h3>Bicycle</h3>
-                <p>When you want to be one with nature!</p>
-            </div>
-        </a>
-        <a href="/" class="main-btn">
-            <div class="box">
-                <img src="/images/motorcycle.png" height="150px" alt="">
-                <h3>Motorcycle</h3>
-                <p>When you want the wind to blow on your face!</p>
-            </div>
-        </a>
-        <a href="/" class="main-btn">
-            <div class="box">
-                <img src="/images/car.png" height="150px" alt="">
-                <h3>Car</h3>
-                <p>Going on a trip with friends?</p>
-            </div>
-        </a>
-    </section>
 
-    <!-- Info Section -->
-    <section class="road">
-        <img src="/images/most-commented.jpg" alt="">
-        <div>
-            <h2>The most commented route</h2>
-            <p>Read more about the most commented route and do not miss the
-                chance to visit it and give your opinion to help other users.</p>
-            <a href="/" class="btn">Learn More</a>
-        </div>
-    </section>
 
-    <!-- Portfolio -->
-<!--    <section class="gallery">-->
-<!--        <img th:each="p: ${pictures}" th:src="${p}" width="200px"-->
-<!--             height="200px" alt="">-->
 
-<!--    </section>-->
 
-    <!-- <script th:src="@{/js/weather.js}"></script> -->
 </div>
-<!-- Wrapper Ends -->
+
 </body>
 <footer th:replace="~{fragments/commons::footer}">
 </footer>
