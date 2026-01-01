@@ -10,6 +10,7 @@ import dev.waitzero.waitzero.model.view.UserViewModel;
 import dev.waitzero.waitzero.repository.TicketRepository;
 import dev.waitzero.waitzero.repository.UserRepository;
 import dev.waitzero.waitzero.service.UserService;
+import dev.waitzero.waitzero.util.CurrentUser;
 import jakarta.validation.Valid;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Controller;
@@ -30,12 +31,14 @@ public class UserController {
     private final UserRepository userRepository;
     private final TicketRepository ticketRepository;
 
+
     public UserController(UserService userService,
                           ModelMapper modelMapper, UserRepository userRepository, TicketRepository ticketRepository) {
         this.userService = userService;
         this.modelMapper = modelMapper;
         this.userRepository = userRepository;
         this.ticketRepository = ticketRepository;
+
     }
 
     @ModelAttribute
@@ -50,7 +53,7 @@ public class UserController {
 
     @GetMapping("/register")
     public String register(Model model) {
-        return "register";
+            return "register";
     }
 
     @PostMapping("/register")
