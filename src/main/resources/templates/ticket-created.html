@@ -31,8 +31,15 @@
             Refresh status
         </a>
     </div>
+    <div class="mt-4" th:if="${ticket == null}">
+        <p>You don't have an active ticket right now.</p>
+        <a th:href="@{/locations}" class="btn btn-primary">
+            Browse locations
+        </a>
+    </div>
 
-    <a href="/locations" class="btn btn-secondary mt-3">Back</a>
+    <a href="/" class="btn btn-link mt-3">Back to home</a>
+
 </main>
 
 <footer th:replace="~{fragments/commons::footer}"></footer>

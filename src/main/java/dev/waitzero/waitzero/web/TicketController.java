@@ -104,13 +104,16 @@ public class TicketController {
 
         var user = userOpt.get();
 
-        // Първо пробваме активен (WAITING) билет
+
         var ticketOpt = ticketRepository
                 .findFirstByUserAndStatusOrderByCreatedAtDesc(user, TicketStatus.WAITING);
 
-        // Ако няма WAITING, може да покажем последния CALLED (по желание)
         if (ticketOpt.isEmpty()) {
-            return "redirect:/locations";
+
+            model.addAttribute("ticket", null);
+            model.addAttribute("peopleAhead", 0);
+            model.addAttribute("estimatedWaitMinutes", null);
+            return "ticket-created";
         }
 
         Ticket ticket = ticketOpt.get();
