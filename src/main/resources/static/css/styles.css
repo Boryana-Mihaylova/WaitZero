@@ -2,7 +2,7 @@
 :root {
     --primary: #ddd;
     --dark: #333;
-    --light: #fff;
+    --light: #d8d5d5;
     --shadow: 0 1px 5px rgba(104, 104, 104, 0.8);
     --lightGray: rgba(241, 241, 241, 0.8);
 }
@@ -14,8 +14,7 @@ html {
 }
 
 body {
-    background-image: url("/images/site-bgr.jpg");
-    backdrop-filter: blur(4px);
+
     padding: 10px;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -372,3 +371,137 @@ body {
 .top-box p {
     font-size: 0.95rem;
 }
+
+body {
+    font-family: 'DM Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+body {
+    background-color: #f5f3ff;
+}
+
+.wrapper,
+.top-container {
+    background: none !important;
+}
+
+.showcase {
+    background-image: none !important;
+}
+
+.showcase {
+    background-color: #ffffff;
+    border-radius: 24px;
+    padding: 3rem 3.5rem;
+    box-shadow: 0 18px 40px rgba(15, 23, 42, 0.12);
+    color: #111827;
+}
+
+.showcase h1 {
+    font-size: 4rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.showcase p {
+    font-size: 1.05rem;
+    color: #4b5563;
+    margin-bottom: 1.5rem;
+}
+
+:root {
+    --wz-purple: #a752cf;
+    --wz-purple-soft: #ede9fe;
+}
+
+.showcase .btn {
+    background-color: var(--wz-purple);
+    border-color: var(--wz-purple);
+    color: #ffffff;
+    padding: 0.7rem 1.6rem;
+    border-radius: 999px; /* pills */
+    font-weight: 500;
+}
+
+.showcase .btn:hover {
+    background-color: #a752cf;
+    border-color: #a752cf;
+}
+
+.showcase {
+    background-color: #ffffff;
+    border-radius: 24px;
+    padding: 3rem 3.5rem;
+    box-shadow: 0 18px 40px rgba(15, 23, 42, 0.12);
+    color: #111827;
+}
+
+.showcase h1 {
+    font-size: 2.8rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #111827 !important;
+}
+
+.showcase p {
+    font-size: 1.05rem;
+    color: #4b5563;
+    margin-bottom: 1.5rem;
+}
+
+.wz-intro h2 {
+    color: #111827;
+    font-weight: 600;
+}
+
+.wz-intro p {
+    color: #4b5563;
+    max-width: 640px;
+    margin: 0.1rem auto;
+}
+
+.top-container {
+    display: block;
+    padding: 0;
+}
+
+.showcase {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+}
+
+.main-nav a {
+    font-family: 'DM Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-weight: 500;
+}
+
+
+.main-nav a:hover {
+    background: var(--wz-purple);
+    color: #ffffff;
+}
+
+footer {
+    background: transparent !important;
+    color: #282b30;
+    box-shadow: none;
+    border: none;
+}
+
+footer {
+    font-size: 0.1rem;
+}
+
+footer {
+    background: transparent !important;
+    color: #4b5563 !important;
+    font-size: 0.2rem;
+}
+
+.footer-copy {
+    color: #6b7280;      /* soft gray */
+    font-size: 0.85rem;  /* малко по-малко */
+    letter-spacing: 0.2px;
+}
+
