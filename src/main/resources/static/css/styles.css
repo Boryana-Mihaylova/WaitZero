@@ -357,3 +357,18 @@ body {
     height: 40px;
     background-color: #0833e3
 }
+
+.top-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.top-box h4 {
+    font-weight: 600;
+}
+
+.top-box p {
+    font-size: 0.95rem;
+}
