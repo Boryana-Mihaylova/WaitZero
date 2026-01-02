@@ -79,21 +79,7 @@ WaitZero helps:
 **Index Page (Welcome)**  
 ![Index](screenshots/index.PNG)
 
-**Register Page**  
-![Register](screenshots/register.PNG)
 
-**Login Page**  
-![Login](screenshots/login.PNG)
-
----
-
-### Home Pages
-
-**User Home Page**  
-![User Home](screenshots/home_user_page.PNG)
-
-**Admin Home Page**  
-![Admin Home](screenshots/home_admin.PNG)
 
 
 ## License
