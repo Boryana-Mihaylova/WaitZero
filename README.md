@@ -1,4 +1,5 @@
-# WaitZero — Digital customer service platform — no waiting in line
+# WaitZero 
+Digital customer service platform — no waiting in line
 
 Customers receive real-time updates about their queue position and arrive just in time — without wasting time.
 
