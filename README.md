@@ -94,3 +94,8 @@ WaitZero helps:
 
 **Admin Home Page**  
 ![Admin Home](screenshots/home_admin.PNG)
+
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
