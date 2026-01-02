@@ -80,8 +80,48 @@ WaitZero helps:
 **Index Page (Welcome)**  
 ![Index](screenshots/index.PNG)
 
+**Register Page**  
+![Register](screenshots/register.PNG)
+
+**Login Page**  
+![Login](screenshots/login.PNG)
 
 
+### Home Pages
+
+**User Home Page**  
+![User Home](screenshots/home_user.PNG)
+
+**Admin Home Page**  
+![Admin Home](screenshots/home_admin.PNG)
+
+
+### Profile
+
+**Profile (Admin View)**  
+![Profile Admin](screenshots/profile_admin.PNG)
+
+**Profile (User View)**  
+![Profile User](screenshots/profile_user.PNG)
+
+
+### Ticket Management
+
+**Location page**  
+![Locations](screenshots/locations_page.PNG)
+
+**Services page (user must log in)**  
+![Take ticket](screenshots/services_page_guest.PNG)
+
+**My ticket page**  
+![Ticket page](screenshots/my_ticket_page.PNG)
+
+**Staff Panel page**  
+![Staff Panel page](screenshots/staff_panel.PNG)
+
+
+
+---
 
 ## License
 
