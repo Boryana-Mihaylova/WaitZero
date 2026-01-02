@@ -48,11 +48,11 @@ WaitZero helps:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/WaitZero.git
+   git clone https://github.com/Boryana-Mihaylova/WaitZero.git
    cd WaitZero
    ```
 
-2. Configure your database credentials in `application-secret.properties` (this file is excluded via `.gitignore`):
+2. Configure your database credentials in `application-secrets.properties` (this file is excluded via `.gitignore`):
    ```properties
    DB_USERNAME=your-db-username
    DB_PASSWORD=your-db-password
