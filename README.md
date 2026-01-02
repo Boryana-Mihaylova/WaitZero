@@ -77,46 +77,46 @@ WaitZero helps:
 
 ### Authentication
 
-**Index Page (Welcome)**  
+**Index page (welcome)**  
 ![Index](screenshots/index.PNG)
 
-**Register Page**  
+**Register page**  
 ![Register](screenshots/register.PNG)
 
-**Login Page**  
+**Login page**  
 ![Login](screenshots/login.PNG)
 
 
-### Home Pages
+### Home pages
 
-**User Home Page**  
+**User home page**  
 ![User Home](screenshots/home_user.PNG)
 
-**Admin Home Page**  
+**Admin home page**  
 ![Admin Home](screenshots/home_admin.PNG)
 
 
 ### Profile
 
-**Profile (Admin View)**  
+**Profile (admin view)**  
 ![Profile Admin](screenshots/profile_admin.PNG)
 
-**Profile (User View)**  
+**Profile (user view)**  
 ![Profile User](screenshots/profile_user.PNG)
 
 
-### Ticket Management
+### Ticket management
 
-**Location page**  
+**Locations page**  
 ![Locations](screenshots/locations_page.PNG)
 
-**Services page (user must log in)**  
+**Services page (login required)**  
 ![Take ticket](screenshots/services_page_guest.PNG)
 
 **My ticket page**  
 ![Ticket page](screenshots/my_ticket_page.PNG)
 
-**Staff Panel page**  
+**Staff panel**  
 ![Staff Panel page](screenshots/staff_panel.PNG)
 
 
