@@ -77,7 +77,7 @@ WaitZero helps:
 ### Authentication
 
 **Index Page (Welcome)**  
-![Index](screenshots/indexPage.PNG)
+![Index](screenshots/index.PNG)
 
 **Register Page**  
 ![Register](screenshots/register.PNG)
