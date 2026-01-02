@@ -1,6 +1,6 @@
-# WaitZero — Cloud-based digital customer service platform with no physical waiting
+# WaitZero — Cloud-based digital customer service platform without physical waiting
 
-Customers receive real-time updates about their queue position and can arrive just in time — without standing in line.
+Customers receive real-time updates about their queue position and arrive just in time — without standing in line.
 
 ## About the Project
 
