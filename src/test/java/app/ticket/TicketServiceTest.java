@@ -132,5 +132,52 @@ public class TicketServiceTest {
 
         verify(ticketRepository, times(1)).save(waitingTicket);
     }
+    @Test
+    void callNextTicket_whenNoWaitingTickets_returnsEmpty() {
+
+        Location location = new Location();
+        location.setId(1L);
+
+        ServiceOffering service = new ServiceOffering();
+        service.setId(2L);
+
+        when(ticketRepository
+                .findFirstByLocationAndServiceAndStatusOrderByCreatedAtAsc(
+                        location, service, dev.waitzero.waitzero.model.entity.TicketStatus.WAITING
+                ))
+                .thenReturn(Optional.empty());
+
+        Optional<?> result = ticketService.callNextTicket(location, service);
+
+        assertTrue(result.isEmpty());
+
+        verify(ticketRepository, never()).save(any());
+    }
+
+    @Test
+    void callNextTicket_whenTicketAlreadyCalled_doesNotChangeIt() {
+
+        Location location = new Location();
+        location.setId(1L);
+
+        ServiceOffering service = new ServiceOffering();
+        service.setId(2L);
+
+        var ticket = new dev.waitzero.waitzero.model.entity.Ticket();
+        ticket.setStatus(dev.waitzero.waitzero.model.entity.TicketStatus.CALLED);
+
+        when(ticketRepository
+                .findFirstByLocationAndServiceAndStatusOrderByCreatedAtAsc(
+                        location, service, dev.waitzero.waitzero.model.entity.TicketStatus.WAITING
+                ))
+                .thenReturn(Optional.of(ticket));
+
+        Optional<?> result = ticketService.callNextTicket(location, service);
+
+        assertTrue(result.isPresent());
+        assertEquals(dev.waitzero.waitzero.model.entity.TicketStatus.CALLED, ticket.getStatus());
+
+        verify(ticketRepository).save(ticket);
+    }
 
 }
