@@ -1,4 +1,4 @@
-package app.user;
+package dev.waitzero.waitzero.user;
 
 
 

@@ -1,4 +1,4 @@
-package app.ticket;
+package dev.waitzero.waitzero.ticket;
 
 
 import dev.waitzero.waitzero.model.entity.*;
