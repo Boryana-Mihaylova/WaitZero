@@ -1,3 +1,4 @@
+![CI](https://github.com/Boryana-Mihaylova/WaitZero/actions/workflows/ci.yml/badge.svg)
 # WaitZero 
 Digital customer service platform — no waiting in line
 
