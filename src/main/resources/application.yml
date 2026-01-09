@@ -1,3 +1,6 @@
+server:
+  port: ${PORT:8080}
+
 spring:
   application:
     name: WaitZero
@@ -22,10 +25,11 @@ spring:
       filter:
         enabled: true
 
-        sql:
-          init:
-            mode: always
-            data-locations: classpath:data.sql
+  spring:
+    sql:
+      init:
+        mode: never
+
 
   jpa:
     # Choose either MySQL 8 or MySQL 5 below
@@ -61,3 +65,5 @@ spring:
     properties:
       hibernate:
         format_sql: true
+
+
