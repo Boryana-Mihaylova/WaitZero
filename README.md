@@ -1,3 +1,4 @@
+![CI](https://github.com/Boryana-Mihaylova/WaitZero/actions/workflows/ci.yml/badge.svg)
 # WaitZero 
 Digital customer service platform — no waiting in line
 
@@ -21,9 +22,11 @@ WaitZero helps:
 - Spring Boot  
 - Spring MVC + Thymeleaf  
 - **Gradle**
-- MySQL  
+- MySQL
+- H2 (tests)  
 - Spring Data JPA  
-- Bootstrap + custom CSS  
+- Bootstrap + custom CSS
+- GitHub Actions (CI)  
 
 ---
 
@@ -39,10 +42,8 @@ WaitZero helps:
 
 ## Roadmap (next steps)
 
-- Dockerize the application  
-- Add GitHub Actions CI pipeline  
-- Deploy to Azure App Service  
-- Add tests (unit + integration)  
+- Dockerize the application 
+- Deploy to Azure App Service    
 - Improve UI/UX
 
 ## Installation & Run
