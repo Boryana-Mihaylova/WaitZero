@@ -60,14 +60,6 @@ jobs:
       - name: Remove plain jar
         run: rm -f WaitZero/build/libs/*-plain.jar
 
-      - name: Debug - list folders
-        run: |
-          pwd
-          ls -la
-          ls -la WaitZero || true
-          ls -la build/libs || true
-          ls -la WaitZero/build/libs || true
-          find . -maxdepth 4 -type f -name "*.jar" -print
 
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v3
@@ -75,6 +67,7 @@ jobs:
           app-name: waitzero-boryana
           package: 'WaitZero/build/libs/*.jar'
           
+
 
 
 
