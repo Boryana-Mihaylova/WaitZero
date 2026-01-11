@@ -5,8 +5,11 @@ import dev.waitzero.waitzero.model.entity.ServiceOffering;
 import dev.waitzero.waitzero.repository.LocationRepository;
 import dev.waitzero.waitzero.repository.ServiceOfferingRepository;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
+
+@Profile("!postgres")
 @Component
 public class DataInitializer implements CommandLineRunner {
 
