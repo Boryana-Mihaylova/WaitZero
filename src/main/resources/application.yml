@@ -14,7 +14,6 @@ spring:
     username: ${DB_USERNAME:root}
     password: ${DB_PASSWORD:}
 
-
   servlet:
     multipart:
       max-file-size: 1MB
@@ -25,26 +24,22 @@ spring:
       filter:
         enabled: true
 
-  spring:
-    sql:
-      init:
-        mode: never
-
+  sql:
+    init:
+      mode: never
 
   jpa:
-    # Choose either MySQL 8 or MySQL 5 below
-    # For MySQL 8
+
     database-platform: org.hibernate.dialect.MySQL8Dialect
-    #For MySQL 5
-    #database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
     hibernate:
       ddl-auto: update
     open-in-view: false
     properties:
       hibernate:
         format_sql: true
-    defer-datasource-initialization: true
 
+
+    defer-datasource-initialization: true
 
 ---
 spring:
@@ -55,10 +50,12 @@ spring:
   datasource:
     driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://localhost:5432/waitzero
-    username: ${DB_USERNAME:waitzero}
-    password: ${DB_PASSWORD:waitzero}
+    username: ${POSTGRES_USER:waitzero}
+    password: ${POSTGRES_PASSWORD:waitzero}
 
   jpa:
+
+
     hibernate:
       ddl-auto: update
     open-in-view: false
@@ -67,3 +64,4 @@ spring:
         format_sql: true
 
 
+    defer-datasource-initialization: true
