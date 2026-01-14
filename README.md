@@ -4,6 +4,7 @@ Digital customer service platform — no waiting in line
 
 Customers receive real-time updates about their queue position and arrive just in time — without wasting time.
 
+
 ## About the Project
 
 In many clinics, labs and public service centers people still physically wait for their turn.
@@ -12,8 +13,26 @@ WaitZero helps:
 
 - reduce waiting in crowded areas  
 - give people real-time queue updates  
-- make staff workflows easier and more organized  
+- make staff workflows easier and more organized
 
+The application is deployed as a live demo with a cloud database and real-time ticket flow.
+
+---
+
+## Live Demo
+
+The application is deployed and available online.  
+You can create your own user account via the Register page and test the full ticket flow.
+
+---
+
+## Demo Admin
+
+Use the demo admin account to access the staff panel and manage the queue.
+
+- **Username:** admin  
+- **Password:** admin123  
+- **Staff panel:** /staff/panel
 ---
 
 ## Tech stack
@@ -21,12 +40,17 @@ WaitZero helps:
 - Java 17  
 - Spring Boot  
 - Spring MVC + Thymeleaf  
-- **Gradle**
-- MySQL
-- H2 (tests)  
+- Gradle  
 - Spring Data JPA  
-- Bootstrap + custom CSS
-- GitHub Actions (CI)  
+- PostgreSQL (Azure Database for PostgreSQL)  
+- Flyway (DB migrations)  
+- H2 (tests)  
+- Docker  
+- GitHub Actions (CI/CD)  
+- Render (hosting)  
+- Bootstrap + custom CSS  
+  
+Originally developed with MySQL, later migrated to PostgreSQL for production
 
 ---
 
@@ -36,15 +60,28 @@ WaitZero helps:
 - Registered users can take digital tickets  
 - Each user can have only one active ticket  
 - Live queue status and estimated waiting time  
-- Staff panel – call next ticket  
-
+- Staff panel – call next ticket
 ---
 
-## Roadmap (next steps)
+## Deployment & Architecture
 
-- Dockerize the application 
-- Deploy to Azure App Service    
+- The application is containerized with Docker
+- CI/CD pipeline via GitHub Actions
+- Deployed on Render
+- Uses Azure PostgreSQL as a managed cloud database
+- Database schema is managed via Flyway migrations
+- Environment-based configuration using Render environment variables
+- Demo admin account is automatically seeded in demo mode
+---
+
+## Roadmap 
+
+**Security**
+- Spring Security (form login, role-based access)
+
+**Product**
 - Improve UI/UX
+---
 
 ## Installation & Run
 
