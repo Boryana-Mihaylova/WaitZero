@@ -76,10 +76,10 @@ Originally developed with MySQL, later migrated to PostgreSQL for production
 
 ## Roadmap 
 
-**Security**
+**Security**:
 - Spring Security (form login, role-based access)
 
-**Product**
+**Product**:
 - Improve UI/UX
 ---
 
