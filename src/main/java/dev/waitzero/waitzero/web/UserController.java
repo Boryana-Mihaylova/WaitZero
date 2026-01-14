@@ -68,7 +68,7 @@ public class UserController {
                     .addFlashAttribute("org.springframework.validation.BindingResult.userRegisterBindingModel",
                             bindingResult);
 
-            return "redirect:register";
+            return "redirect:/users/register";
         }
 
         boolean isNameExists = userService.isNameExists(userRegisterBindingModel.getUsername());
@@ -79,14 +79,14 @@ public class UserController {
         userService.registerUser(modelMapper
                 .map(userRegisterBindingModel, UserServiceModel.class));
 
-        return "redirect:login";
+        return "redirect:/users/login";
     }
 
     @GetMapping("/login")
     public String login(Model model) {
         model.addAttribute("isExist", true);
 
-        return "/login";
+        return "login";
     }
 
     @PostMapping("/login")
@@ -99,7 +99,7 @@ public class UserController {
                     .addFlashAttribute("org.springframework.validation.BindingResult.userLoginBindingModel"
                             , userLoginBindingModel);
 
-            return "redirect:login";
+            return "redirect:/users/login";
         }
 
         UserServiceModel user = userService
@@ -113,7 +113,7 @@ public class UserController {
                     .addFlashAttribute("org.springframework.org.BindingResult.userLoginBindingModel",
                             bindingResult);
 
-            return "redirect:login";
+            return "redirect:/users/login";
         }
 
         userService.loginUser(user.getId(), user.getUsername());
