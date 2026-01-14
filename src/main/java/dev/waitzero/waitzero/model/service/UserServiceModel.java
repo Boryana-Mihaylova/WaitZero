@@ -1,7 +1,7 @@
 package dev.waitzero.waitzero.model.service;
 
 
-import java.util.Set;
+
 
 public class UserServiceModel {
     private Long id;
