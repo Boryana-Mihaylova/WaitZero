@@ -23,7 +23,7 @@ The application is deployed as a live demo with a cloud database and real-time t
 
 The application is deployed and available online:
 
-👉 https://waitzero.onrender.com
+👉 https://waitzero-app.onrender.com
 
 You can create your own user account via the Register page and test the full ticket flow.
 
