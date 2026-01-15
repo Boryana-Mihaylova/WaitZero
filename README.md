@@ -68,13 +68,38 @@ Originally developed with MySQL, later migrated to PostgreSQL for production
 
 ## Deployment & Architecture
 
-- The application is containerized with Docker
-- CI/CD pipeline via GitHub Actions
-- Deployed on Render
-- Uses Azure PostgreSQL as a managed cloud database
-- Database schema is managed via Flyway migrations
-- Environment-based configuration using Render environment variables
-- Demo admin account is automatically seeded in demo mode
+The application runs as a Docker container on Render.  
+On each deployment, the container is built from the Dockerfile and started with environment-based configuration.  
+Render provides a dynamic `PORT` which is used by Spring Boot.  
+The application connects to Azure Database for PostgreSQL over SSL using credentials injected via environment variables.  
+Flyway automatically applies database migrations on startup.  
+Render monitors the service through the `/health` endpoint.
+
+---
+
+### Architecture (production)
+
+Browser  
+  ↓ HTTPS  
+Render Web Service (Docker container)  
+  - Spring Boot (PORT env var)  
+  - /health endpoint  
+  ↓ JDBC (SSL)  
+Azure Database for PostgreSQL  
+  - Flyway migrations on startup
+
+---
+
+### CI/CD & Deployment
+
+GitHub (`master` branch)  
+  ↓ push  
+GitHub Actions (build & tests)  
+  ↓  
+Render (builds Docker image from Dockerfile & deploys)  
+  ↓  
+Running production service
+
 ---
 
 ## Roadmap 
