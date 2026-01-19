@@ -4,6 +4,7 @@ Digital customer service platform — no waiting in line
 
 Customers receive real-time updates about their queue position and arrive just in time — without wasting time.
 
+
 ## About the Project
 
 In many clinics, labs and public service centers people still physically wait for their turn.
@@ -12,8 +13,31 @@ WaitZero helps:
 
 - reduce waiting in crowded areas  
 - give people real-time queue updates  
-- make staff workflows easier and more organized  
+- make staff workflows easier and more organized
 
+The application is deployed as a live demo with a cloud database and real-time ticket flow.
+
+---
+
+## Live Demo
+
+The application is deployed and available online:
+> Note: The demo runs on Render free tier.  
+> If the service has been idle, the first request may take up to ~1 minute to start.
+
+👉 https://waitzero-app.onrender.com
+
+You can create your own user account via the Register page and test the full ticket flow.
+
+---
+
+## Demo Admin
+
+Use the demo admin account to access the staff panel and manage the queue.
+
+- **Username:** admin  
+- **Password:** admin123  
+- **Staff panel:** /staff/panel
 ---
 
 ## Tech stack
@@ -21,12 +45,17 @@ WaitZero helps:
 - Java 17  
 - Spring Boot  
 - Spring MVC + Thymeleaf  
-- **Gradle**
-- MySQL
-- H2 (tests)  
+- Gradle  
 - Spring Data JPA  
-- Bootstrap + custom CSS
-- GitHub Actions (CI)  
+- PostgreSQL (Azure Database for PostgreSQL)  
+- Flyway (DB migrations)  
+- H2 (tests)  
+- Docker  
+- GitHub Actions (CI/CD)  
+- Render (hosting)  
+- Bootstrap + custom CSS  
+  
+Originally developed with MySQL, later migrated to PostgreSQL for production
 
 ---
 
@@ -36,15 +65,53 @@ WaitZero helps:
 - Registered users can take digital tickets  
 - Each user can have only one active ticket  
 - Live queue status and estimated waiting time  
-- Staff panel – call next ticket  
+- Staff panel – call next ticket
+---
+
+## Deployment & Architecture
+
+The application runs as a Docker container on Render.  
+On each deployment, the container is built from the Dockerfile and started with environment-based configuration.  
+Render provides a dynamic `PORT` which is used by Spring Boot.  
+The application connects to Azure Database for PostgreSQL over SSL using credentials injected via environment variables.  
+Flyway automatically applies database migrations on startup.  
+Render monitors the service through the `/health` endpoint.
 
 ---
 
-## Roadmap (next steps)
+### Architecture (production)
 
-- Dockerize the application 
-- Deploy to Azure App Service    
+Browser  
+  ↓ HTTPS  
+Render Web Service (Docker container)  
+  - Spring Boot (PORT env var)  
+  - /health endpoint  
+  ↓ JDBC (SSL)  
+Azure Database for PostgreSQL  
+  - Flyway migrations on startup
+
+---
+
+### CI/CD & Deployment
+
+GitHub (`master` branch)  
+  ↓ push  
+GitHub Actions (build & tests)  
+  ↓  
+Render (builds Docker image from Dockerfile & deploys)  
+  ↓  
+Running production service
+
+---
+
+## Roadmap 
+
+**Security**:
+- Spring Security (form login, role-based access)
+
+**Product**:
 - Improve UI/UX
+---
 
 ## Installation & Run
 
