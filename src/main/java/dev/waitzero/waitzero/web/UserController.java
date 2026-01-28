@@ -74,7 +74,9 @@ public class UserController {
         boolean isNameExists = userService.isNameExists(userRegisterBindingModel.getUsername());
 
         if (isNameExists) {
-            //ToDo: redirect with message
+            rAtt.addFlashAttribute("usernameExists", true);
+            rAtt.addFlashAttribute("userRegisterBindingModel", userRegisterBindingModel);
+            return "redirect:/users/register";
         }
         userService.registerUser(modelMapper
                 .map(userRegisterBindingModel, UserServiceModel.class));
