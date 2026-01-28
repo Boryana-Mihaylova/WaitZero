@@ -5,11 +5,10 @@ package dev.waitzero.waitzero.model.service;
 
 public class UserServiceModel {
     private Long id;
-    private String fullName;
     private String username;
     private String password;
-    private String email;
-    private Integer age;
+
+
 
 
     public UserServiceModel() {
@@ -24,14 +23,7 @@ public class UserServiceModel {
         return this;
     }
 
-    public String getFullName() {
-        return fullName;
-    }
 
-    public UserServiceModel setFullName(String fullName) {
-        this.fullName = fullName;
-        return this;
-    }
 
     public String getUsername() {
         return username;
@@ -48,24 +40,6 @@ public class UserServiceModel {
 
     public UserServiceModel setPassword(String password) {
         this.password = password;
-        return this;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public UserServiceModel setEmail(String email) {
-        this.email = email;
-        return this;
-    }
-
-    public Integer getAge() {
-        return age;
-    }
-
-    public UserServiceModel setAge(Integer age) {
-        this.age = age;
         return this;
     }
 

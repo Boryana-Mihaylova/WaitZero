@@ -20,11 +20,6 @@ public interface TicketRepository extends JpaRepository<Ticket, Long> {
     int findMaxTicketNumber(Location location, ServiceOffering service);
 
 
-    long countByLocationAndServiceAndStatus(
-            Location location,
-            ServiceOffering service,
-            TicketStatus status
-    );
 
 
     Optional<Ticket> findFirstByLocationAndServiceAndStatusOrderByCreatedAtAsc(
@@ -33,11 +28,6 @@ public interface TicketRepository extends JpaRepository<Ticket, Long> {
             TicketStatus status
     );
 
-
-    List<Ticket> findByLocationAndStatusOrderByCreatedAtAsc(
-            Location location,
-            TicketStatus status
-    );
 
 
     Long countByLocationAndServiceAndStatusAndCreatedAtBefore(
@@ -48,11 +38,6 @@ public interface TicketRepository extends JpaRepository<Ticket, Long> {
     );
 
 
-    List<Ticket> findByLocationAndServiceAndStatusOrderByCreatedAtAsc(
-            Location location,
-            ServiceOffering service,
-            TicketStatus status
-    );
 
     List<Ticket> findByStatusOrderByCreatedAtAsc(TicketStatus status);
 
@@ -64,6 +49,5 @@ public interface TicketRepository extends JpaRepository<Ticket, Long> {
             User user,
             TicketStatus status
     );
-
 
 }

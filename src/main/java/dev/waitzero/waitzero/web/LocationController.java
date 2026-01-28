@@ -30,7 +30,7 @@ public class LocationController {
     @GetMapping
     public String allLocations(Model model) {
         model.addAttribute("locations", locationRepository.findAll());
-        return "locations"; // -> templates/locations.html
+        return "locations";
     }
 
     @GetMapping("/{id}")

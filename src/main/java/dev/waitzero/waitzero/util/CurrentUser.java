@@ -10,6 +10,10 @@ public class CurrentUser {
 
     private Long id;
     private String username;
+    private UserRole role;
+
+
+
 
     public Long getId() {
         return id;
@@ -20,7 +24,6 @@ public class CurrentUser {
         return this;
     }
 
-    private UserRole role;
 
     public UserRole getRole() {
         return role;
