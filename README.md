@@ -23,7 +23,7 @@ The application is deployed as a live demo with a cloud database and real-time t
 
 The application is deployed and available online:
 > Note: The demo runs on Render free tier.  
-> If the service has been idle, the first request may take up to ~1 minute to start.
+> If the service has been idle, the first request may take up to ~2–3 minutes to start.
 
 👉 https://waitzero-app.onrender.com
 
