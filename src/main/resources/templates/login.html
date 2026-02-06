@@ -22,7 +22,7 @@
                         <input type="text"
                                th:field="*{username}"
                                th:errorclass="'is-invalid bg-danger'"
-                               required minlength="4" maxlength="20"
+                               required minlength="3" maxlength="20"
                                id="inputUsername"
                                class="form-control"
                                aria-describedby="usernameHelpInline">
@@ -38,7 +38,7 @@
                     <div class="col-auto">
                         <input type="password"
                                th:field="*{password}"
-                               required minlength="4" maxlength="20"
+                               required minlength="5" maxlength="20"
                                id="inputPassword" class="form-control"
                                aria-describedby="passwordHelpInline">
                     </div>
