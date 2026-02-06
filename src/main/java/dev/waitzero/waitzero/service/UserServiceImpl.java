@@ -26,6 +26,11 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void registerUser(UserServiceModel userServiceModel) {
+
+        if (userServiceModel.getUsername() != null) {
+            userServiceModel.setUsername(userServiceModel.getUsername().trim());
+        }
+
         User user = modelMapper.map(userServiceModel, User.class);
 
         user.setRole(UserRole.USER);
@@ -35,6 +40,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserServiceModel findUserByUsernameAndPassword(String username, String password) {
+
+        if (username != null) username = username.trim();
+
         return userRepository
                 .findByUsernameAndPassword(username, password)
                 .map(user -> modelMapper.map(user, UserServiceModel.class))
