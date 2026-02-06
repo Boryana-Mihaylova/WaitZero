@@ -15,7 +15,7 @@ WaitZero helps:
 - give people real-time queue updates  
 - make staff workflows easier and more organized
 
-The application is deployed as a live demo with a cloud database and real-time ticket flow.
+The application has been deployed as a live demo with a cloud database and real-time ticket flow, later adapted to an in-memory setup for the public demo.
 
 ---
 
@@ -23,11 +23,19 @@ The application is deployed as a live demo with a cloud database and real-time t
 
 The application is deployed and available online:
 > Note: The demo runs on Render free tier.  
-> If the service has been idle, the first request may take up to ~1 minute to start.
+> If the service has been idle, the first request may take up to ~2–3 minutes to start.
 
-👉 https://waitzero-app.onrender.com
+👉 https://waitzero-demo.onrender.com
 
 You can create your own user account via the Register page and test the full ticket flow.
+
+---
+
+## Demo Notes
+
+The application was previously deployed with an external Azure PostgreSQL database during the free credit period.  
+The updated live demo runs on Render free tier using an in-memory H2 database.  
+Data may persist for some time while the application is running, but can be reset when the service restarts or becomes idle.
 
 ---
 
@@ -47,9 +55,9 @@ Use the demo admin account to access the staff panel and manage the queue.
 - Spring MVC + Thymeleaf  
 - Gradle  
 - Spring Data JPA  
-- PostgreSQL (Azure Database for PostgreSQL)  
+- PostgreSQL (Azure Database for PostgreSQL, previous production setup)  
 - Flyway (DB migrations)  
-- H2 (tests)  
+- H2 (in-memory demo database)  
 - Docker  
 - GitHub Actions (CI/CD)  
 - Render (hosting)  
@@ -70,16 +78,17 @@ Originally developed with MySQL, later migrated to PostgreSQL for production
 
 ## Deployment & Architecture
 
-The application runs as a Docker container on Render.  
-On each deployment, the container is built from the Dockerfile and started with environment-based configuration.  
-Render provides a dynamic `PORT` which is used by Spring Boot.  
-The application connects to Azure Database for PostgreSQL over SSL using credentials injected via environment variables.  
-Flyway automatically applies database migrations on startup.  
-Render monitors the service through the `/health` endpoint.
+The application runs as a Docker container on Render.
+
+On each deployment, the container is built from the Dockerfile and started with environment-based configuration.
+Render provides a dynamic `PORT` which is used by Spring Boot.
+Flyway automatically applies database migrations on startup when a relational database is configured.
+
+The current public demo uses an in-memory H2 database to ensure stable and cost-free availability.
 
 ---
 
-### Architecture (production)
+### Architecture (production-like, previous setup)
 
 Browser  
   ↓ HTTPS  
@@ -89,18 +98,29 @@ Render Web Service (Docker container)
   ↓ JDBC (SSL)  
 Azure Database for PostgreSQL  
   - Flyway migrations on startup
+    
+    
+
+### Architecture (current demo)
+
+Browser  
+  ↓ HTTPS  
+Render Web Service (Docker container)  
+  - Spring Boot  
+  - In-memory H2 database  
+  - /health endpoint
 
 ---
 
 ### CI/CD & Deployment
 
-GitHub (`master` branch)  
+GitHub (`demo/h2-render` branch)  
   ↓ push  
 GitHub Actions (build & tests)  
   ↓  
 Render (builds Docker image from Dockerfile & deploys)  
   ↓  
-Running production service
+Running demo service
 
 ---
 
@@ -114,6 +134,8 @@ Running production service
 ---
 
 ## Installation & Run
+
+This setup describes running the application locally with a relational database.
 
 1. Clone the repository:
    ```bash
