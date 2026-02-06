@@ -86,8 +86,9 @@ public class UserController {
 
     @GetMapping("/login")
     public String login(Model model) {
-        model.addAttribute("isExist", true);
-
+        if (!model.containsAttribute("isExist")) {
+            model.addAttribute("isExist", true);
+        }
         return "login";
     }
 
@@ -112,7 +113,7 @@ public class UserController {
             rAtt
                     .addFlashAttribute("isExist", false)
                     .addFlashAttribute("userLoginBindingModel", userLoginBindingModel)
-                    .addFlashAttribute("org.springframework.org.BindingResult.userLoginBindingModel",
+                    .addFlashAttribute("org.springframework.validation.BindingResult.userLoginBindingModel",
                             bindingResult);
 
             return "redirect:/users/login";
