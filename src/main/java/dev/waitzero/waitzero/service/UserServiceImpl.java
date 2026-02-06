@@ -77,6 +77,11 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean isNameExists(String username) {
+
+        if (username != null) {
+            username = username.trim();
+        }
+        
         return userRepository
                 .findByUsername(username)
                 .isPresent();
