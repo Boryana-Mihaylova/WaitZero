@@ -70,7 +70,7 @@ public class TicketController {
 
         populateTicketModel(model, ticket);
 
-        return "ticket-created";
+        return "redirect:/tickets/" + ticket.getId();
     }
 
     @GetMapping("/{id}")
