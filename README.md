@@ -1,6 +1,6 @@
 ![CI](https://github.com/Boryana-Mihaylova/WaitZero/actions/workflows/ci.yml/badge.svg)
 # WaitZero 
-Digital customer service platform — no waiting in line
+Digital queue and service management platform — no waiting in line
 
 Customers receive real-time updates about their queue position and arrive just in time — without wasting time.
 
